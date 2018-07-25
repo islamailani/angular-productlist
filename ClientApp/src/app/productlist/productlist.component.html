@@ -1,0 +1,30 @@
+<ul class="item-list cart-items" id="tst_productList_nonTable">
+    <li *ngFor="let product of products" id="tst_productList_{{product.id}}" 
+        class="row item-block checkout-item isc-productContainer {{product.isSponsored ? 'sponsored' : ''}}" 
+        [attr.data-product]="product.id">
+        <div class="item-thumb">
+            <a [attr.href]="product.productDetailUrl">
+                <img [attr.src]="product.mediumImagePath" [attr.alt]="product.altText" />
+            </a>
+        </div>
+        <div class="item-details">
+            <div class="item-inf-wrapper">
+                <div class="item-description">
+                    <div class="item-name">
+                        <a [attr.href]="product.productDetailUrl">{{product.shortDescription}}</a>
+                    </div>
+                    <div class="item-num">
+                        <span class="item-num-sku">{{product.erpNumber}}</span>
+                        <span *ngIf="product.manufacturerItem" class="item-num-mfg">MFG #: {{product.manufacturerItem}}</span>
+                        <span *ngIf="product.customerName" class="item-num-my">My Part #: {{product.customerName}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="item-price">
+                <div class="product-info">
+                    <isc-product-price [product]="product"></isc-product-price>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
