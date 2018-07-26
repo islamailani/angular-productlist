@@ -21,7 +21,7 @@ export class ProductDetailComponent implements OnInit {
 
     ngOnInit() {
         this.service.getCatalogPage(this.router.url).subscribe(
-            catalogPage => {                
+            catalogPage => {
                 this.service.getProduct(catalogPage.category.id, catalogPage.productId).subscribe(
                     product => {
                         this.product = product.product;

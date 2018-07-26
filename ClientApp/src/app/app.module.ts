@@ -12,25 +12,26 @@ import { ProductPriceComponent } from './productlist/productprice.component';
 import { ProductDetailComponent } from './productdetail/productdetail.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    ProductListComponent,
-    ProductPriceComponent,
-    ProductDetailComponent
-  ],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'Category', component: ProductListComponent },
-      { path: '**', component: ProductDetailComponent }
-    ])
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavMenuComponent,
+        HomeComponent,
+        ProductListComponent,
+        ProductPriceComponent,
+        ProductDetailComponent
+    ],
+    imports: [
+        BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+        HttpClientModule,
+        FormsModule,
+        RouterModule.forRoot([
+            { path: '', component: HomeComponent, pathMatch: 'full' },
+            { path: 'Category', component: ProductListComponent },
+            { path: '**', component: ProductDetailComponent }
+        ])
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

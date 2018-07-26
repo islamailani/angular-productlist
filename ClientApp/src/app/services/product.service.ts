@@ -60,18 +60,19 @@ export class ProductService {
     constructor(private http: HttpClient) {
         console.log('ProductService: constructor');
     }
-    
-    products : ProductDto[]
 
-    DoSomething() : number {
-        var product :  ProductDto;
+    products: ProductDto[]
+
+    DoSomething(): number {
+        var product: ProductDto;
         return 3;
     }
 
-    GetProducts(parameters: IProductCollectionParameters, expand?: string[], filter?: string[]) : Observable<ProductCollectionModel> {
+    GetProducts(parameters: IProductCollectionParameters, expand?: string[], filter?: string[]):
+        Observable<ProductCollectionModel> {
         var address = this.testDomain + this.productServiceUri;
         var params = this.getProductsParams(parameters, expand, filter);
-        return this.http.get<ProductCollectionModel>(address, { params : params } );
+        return this.http.get<ProductCollectionModel>(address, { params: params });
     }
 
     protected getProductsParams(parameters: IProductCollectionParameters, expand?: string[], filter?: string[]): any {
@@ -89,12 +90,12 @@ export class ProductService {
     }
 
     getCatalogPage(path: string): Observable<CatalogPageModel> {
-      var address = this.testDomain + this.catalogPageServiceUri;
-      return this.http.get<CatalogPageModel>(address, { params: this.getCatalogPageParams(path) });
+        var address = this.testDomain + this.catalogPageServiceUri;
+        return this.http.get<CatalogPageModel>(address, { params: this.getCatalogPageParams(path) });
     }
 
     protected getCatalogPageParams(path: string): any {
-      return { path: path };
+        return { path: path };
     }
 
     getProduct(categoryId: System.Guid,
@@ -105,10 +106,21 @@ export class ProductService {
         includeAttributes?: string): Observable<ProductModel> {
 
         var address = this.testDomain + this.productServiceUri + productId;
-        return this.http.get<ProductModel>(address, { params: this.getProductParams(categoryId, expand, addToRecentlyViewed, applyPersonalization, includeAttributes) });
+        return this.http.get<ProductModel>(address,
+            {
+                params: this.getProductParams(categoryId,
+                    expand,
+                    addToRecentlyViewed,
+                    applyPersonalization,
+                    includeAttributes)
+            });
     }
 
-    protected getProductParams(categoryId: System.Guid, expand?: string[], addToRecentlyViewed?: boolean, applyPersonalization?: boolean, includeAttributes?: string): any {
+    protected getProductParams(categoryId: System.Guid,
+        expand?: string[],
+        addToRecentlyViewed?: boolean,
+        applyPersonalization?: boolean,
+        includeAttributes?: string): any {
         const params = {} as any;
 
         if (expand) {

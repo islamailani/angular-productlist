@@ -1,10 +1,10 @@
 <ul class="item-list cart-items" id="tst_productList_nonTable">
-    <li *ngFor="let product of products" id="tst_productList_{{product.id}}" 
-        class="row item-block checkout-item isc-productContainer {{product.isSponsored ? 'sponsored' : ''}}" 
+    <li *ngFor="let product of products" id="tst_productList_{{product.id}}"
+        class="row item-block checkout-item isc-productContainer {{product.isSponsored ? 'sponsored' : ''}}"
         [attr.data-product]="product.id">
         <div class="item-thumb">
             <a [attr.href]="product.productDetailUrl">
-                <img [attr.src]="product.mediumImagePath" [attr.alt]="product.altText" />
+                <img [attr.src]="product.mediumImagePath" [attr.alt]="product.altText"/>
             </a>
         </div>
         <div class="item-details">
