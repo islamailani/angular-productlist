@@ -48,7 +48,7 @@ export interface IProductPriceParameter {
 
 @Injectable()
 export class ProductService {
-    testDomain = "http://trunk.local.com/";
+    testDomain = ""; // "http://trunk.local.com/";
     productServiceUri = "/api/v1/products/";
     categoryServiceUri = "/api/v1/categories";
     catalogPageServiceUri = "/api/v1/catalogpages";
