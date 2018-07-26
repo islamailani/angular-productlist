@@ -9,6 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './productlist/productlist.component'
 import { ProductPriceComponent } from './productlist/productprice.component';
+import { ProductDetailComponent } from './productdetail/productdetail.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProductPriceComponent } from './productlist/productprice.component';
     NavMenuComponent,
     HomeComponent,
     ProductListComponent,
-    ProductPriceComponent
+    ProductPriceComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -24,7 +26,8 @@ import { ProductPriceComponent } from './productlist/productprice.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: ProductListComponent },
+      { path: 'Category', component: ProductListComponent },
+      { path: '**', component: ProductDetailComponent }
     ])
   ],
   providers: [],

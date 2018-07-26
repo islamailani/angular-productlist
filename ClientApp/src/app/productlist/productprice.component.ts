@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProductService } from './product.service'
+import { ProductService } from '../services/product.service'
 import {ViewEncapsulation} from '@angular/core';
 
 import ProductDto = Insite.Catalog.Services.Dtos.ProductDto;

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 import ProductDto = Insite.Catalog.Services.Dtos.ProductDto;
 import ProductCollectionModel = Insite.Catalog.WebApi.V1.ApiModels.ProductCollectionModel;
+import CatalogPageModel = Insite.Catalog.WebApi.V1.ApiModels.CatalogPageModel;
+import ProductModel = Insite.Catalog.WebApi.V1.ApiModels.ProductModel;
 
 export interface IProductCollectionParameters {
     categoryId?: System.Guid;
@@ -81,6 +83,48 @@ export class ProductService {
 
         if (filter) {
             params.filter = filter.join();
+        }
+
+        return params;
+    }
+
+    getCatalogPage(path: string): Observable<CatalogPageModel> {
+      var address = this.testDomain + this.catalogPageServiceUri;
+      return this.http.get<CatalogPageModel>(address, { params: this.getCatalogPageParams(path) });
+    }
+
+    protected getCatalogPageParams(path: string): any {
+      return { path: path };
+    }
+
+    getProduct(categoryId: System.Guid,
+        productId: System.Guid,
+        expand?: string[],
+        addToRecentlyViewed?: boolean,
+        applyPersonalization?: boolean,
+        includeAttributes?: string): Observable<ProductModel> {
+
+        var address = this.testDomain + this.productServiceUri + productId;
+        return this.http.get<ProductModel>(address, { params: this.getProductParams(categoryId, expand, addToRecentlyViewed, applyPersonalization, includeAttributes) });
+    }
+
+    protected getProductParams(categoryId: System.Guid, expand?: string[], addToRecentlyViewed?: boolean, applyPersonalization?: boolean, includeAttributes?: string): any {
+        const params = {} as any;
+
+        if (expand) {
+            params.expand = expand.join();
+        }
+        if (categoryId) {
+            params.categoryId = categoryId;
+        }
+        if (addToRecentlyViewed) {
+            params.addToRecentlyViewed = true;
+        }
+        if (applyPersonalization) {
+            params.applyPersonalization = applyPersonalization;
+        }
+        if (includeAttributes) {
+            params.includeAttributes = includeAttributes;
         }
 
         return params;
