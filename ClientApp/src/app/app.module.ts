@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './productlist/productlist.component'
 import { ProductPriceComponent } from './productlist/productprice.component';
 import { ProductDetailComponent } from './productdetail/productdetail.component';
+import { PagerComponent } from './productlist/pager.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { ProductDetailComponent } from './productdetail/productdetail.component'
         HomeComponent,
         ProductListComponent,
         ProductPriceComponent,
-        ProductDetailComponent
+        ProductDetailComponent,
+        PagerComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

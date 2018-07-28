@@ -1,0 +1,7 @@
+<nav aria-label="...">
+    <ul class="pagination">
+        <li [ngClass]="{ 'disabled' : pagination.page <= 1 }" ><a [routerLink]=""(click)="prevPage()"  aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>        
+        <li><a [routerLink]="" class="disabled">{{pagination.page}}</a></li>
+        <li [ngClass]="{ 'disabled' : pagination.page >= pagination.numberOfPages }"><a [routerLink]="" (click)="nextPage()" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+</nav>
