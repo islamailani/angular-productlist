@@ -1,32 +1,33 @@
-<app-pager [pagination]="productCollection.pagination" [updateData]="updateProductData"></app-pager>
-<ul class="item-list cart-items" id="tst_productList_nonTable">
-    <li *ngFor="let product of products" id="tst_productList_{{product.id}}"
 
-        class="row item-block checkout-item isc-productContainer {{product.isSponsored ? 'sponsored' : ''}}"
-        [attr.data-product]="product.id">
-        <div class="item-thumb">
+<div class="container" id="tst_productList_nonTable">
+    <div class="row">
+        <app-pager class="col-sm" [pagination]="productCollection.pagination" [updateData]="updateProductData"></app-pager>
+    </div>
+    <div *ngFor="let product of products" id="tst_productList_{{product.id}}"
+         class="row well isc-productContainer {{product.isSponsored ? 'sponsored' : ''}}"
+         [attr.data-product]="product.id">
+        <div class="col-12 col-sm-12 col-md-2 text-center">
             <a [attr.href]="product.productDetailUrl">
-                <img [attr.src]="product.mediumImagePath" [attr.alt]="product.altText" />
+                <img [attr.src]="product.mediumImagePath" [attr.alt]="product.altText"/>
             </a>
         </div>
-        <div class="item-details">
-            <div class="item-inf-wrapper">
-                <div class="item-description">
-                    <div class="item-name">
-                        <a [attr.href]="product.productDetailUrl">{{product.shortDescription}}</a>
-                    </div>
-                    <div class="item-num">
-                        <span class="item-num-sku">{{product.erpNumber}}</span>
-                        <span *ngIf="product.manufacturerItem" class="item-num-mfg">MFG #: {{product.manufacturerItem}}</span>
-                        <span *ngIf="product.customerName" class="item-num-my">My Part #: {{product.customerName}}</span>
-                    </div>
+        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+            <div class="container">
+                <div class="row">
+                    <h4><a [attr.href]="product.productDetailUrl">{{product.shortDescription}}</a></h4>
                 </div>
-            </div>
-            <div class="item-price">
-                <div class="product-info">
-                    <isc-product-price [product]="product"></isc-product-price>
-                </div>
+                <div class="row text-muted">{{product.erpNumber}}</div>
+                <div class="row text-muted" *ngIf="product.manufacturerItem">MFG #: {{product.manufacturerItem}}</div>
+                <div class="row text-muted" *ngIf="product.customerName">My Part #: {{product.customerName}}</div>
             </div>
         </div>
-    </li>
-</ul>
+        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+            <isc-product-price [product]="product"></isc-product-price>
+        </div>
+        <div class="col-2 col-sm-2 col-md-2 text-right">
+            <button type="button" class="btn">
+                <i class="fa fa-trash" aria-hidden="true"></i>Add To Cart
+            </button>
+        </div>
+    </div>
+</div>
