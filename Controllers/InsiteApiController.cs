@@ -21,5 +21,14 @@ namespace insite.Controllers
 
             return await response.Content.ReadAsStringAsync();
         }
+
+        [HttpPost]
+        public async Task<string> Post(string url, [FromBody]object contentIn)
+        {
+            var content = new StringContent(contentIn.ToString());
+            var response = await this.httpClient.PostAsync($"api/v1/{url}{this.Request.QueryString}", content);
+
+            return await response.Content.ReadAsStringAsync();
+        }
     }
 }

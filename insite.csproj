@@ -25,11 +25,13 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\app.server.module.ts" />
+    <None Remove="ClientApp\src\app\services\cart.service.ts" />
     <None Remove="ClientApp\src\main.server.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app.server.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\cart.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\main.server.ts" />
   </ItemGroup>
 

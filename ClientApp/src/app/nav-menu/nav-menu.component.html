@@ -1,16 +1,27 @@
 <div class='main-nav'>
-    <div class='navbar navbar-inverse'>
-        <ul class='nav navbar-nav'>
-            <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-                <a [routerLink]='["/"]' (click)='collapse()'>
-                    <span class='glyphicon glyphicon-home'></span> Home
-                </a>
-            </li>
-            <li [routerLinkActive]='["link-active"]'>
-                <a [routerLink]='["/Category"]' (click)='collapse()'>
-                    <span class='glyphicon glyphicon-education'></span> Category
-                </a>
-            </li>
-        </ul>
+    <div class='navbar navbar-default'>
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+                <ul class='nav navbar-nav'>
+                    <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+                        <a [routerLink]='["/"]' (click)='collapse()'>
+                            Home
+                        </a>
+                    </li>
+                    <li [routerLinkActive]='["link-active"]'>
+                        <a [routerLink]='["/Category"]' (click)='collapse()'>
+                            Category
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a [routerLink]='["/Cart"]'>
+                            <span class='glyphicon glyphicon-shopping-cart'></span><span> {{cart.cartLines.length}} </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
