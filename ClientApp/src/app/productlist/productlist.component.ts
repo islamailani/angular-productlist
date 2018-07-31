@@ -9,9 +9,11 @@ import ProductDto = Insite.Catalog.Services.Dtos.ProductDto;
 import ProductCollectionModel = Insite.Catalog.WebApi.V1.ApiModels.ProductCollectionModel;
 import { IProductCollectionParameters } from '../services/product.service';
 
-@Component({
+@
+Component({
     selector: 'productlist',
-    template: '<div [innerHTML]="template | keepHtml"></div>',
+    //template: '<div [innerHTML]="template | keepHtml"></div>',
+    templateUrl: './productlist.component.html',
     styleUrls: ['./productlist.component.css'],
     providers: [ProductService, CartService],
 
@@ -33,6 +35,11 @@ export class ProductListComponent implements OnInit {
         private cartService: CartService) { }
 
     ngOnInit() {
+        this.getProductData({ categoryId: "a926eb0b-1e10-4163-adaf-a67200d93e63" });
+    }
+
+    /*
+    ngOnInit() {
         this.http.get("/scripts/app/productlist.html", { responseType:"text" }).subscribe(t => {
                 this.template = t;
                 this.getProductData({ categoryId: "a926eb0b-1e10-4163-adaf-a67200d93e63" })
@@ -42,7 +49,7 @@ export class ProductListComponent implements OnInit {
             }
         );
     }
-
+    */
     protected getProductData(params: IProductCollectionParameters, expand?: string[]): void {
         var products = this.productService.GetProducts(params).subscribe(
             productCollection => {

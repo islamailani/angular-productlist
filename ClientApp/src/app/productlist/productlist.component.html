@@ -1,17 +1,17 @@
 
 <div class="container" id="tst_productList_nonTable">
-    <div class="row">
+    <div class="row" *ngIf="productCollection">
         <app-pager class="col-sm" [pagination]="productCollection.pagination" [updateData]="updateProductData"></app-pager>
     </div>
     <div *ngFor="let product of products" id="tst_productList_{{product.id}}"
          class="row well isc-productContainer {{product.isSponsored ? 'sponsored' : ''}}"
          [attr.data-product]="product.id">
-        <div class="col-12 col-sm-12 col-md-2 text-center">
+        <div class="col-2 col-sm-2 col-md-2 text-center">
             <a [attr.href]="product.productDetailUrl">
                 <img [attr.src]="product.mediumImagePath" [attr.alt]="product.altText"/>
             </a>
         </div>
-        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+        <div class="text-sm-center col-sm-4 text-md-left">
             <div class="container">
                 <div class="row">
                     <h4><a [attr.href]="product.productDetailUrl">{{product.shortDescription}}</a></h4>
@@ -21,13 +21,21 @@
                 <div class="row text-muted" *ngIf="product.customerName">My Part #: {{product.customerName}}</div>
             </div>
         </div>
-        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+        <div class="col-sm-2">
             <isc-product-price [product]="product"></isc-product-price>
         </div>
-        <div class="col-2 col-sm-2 col-md-2 text-right">
-            <button type="button" class="btn" (click)="addToCart(product)">
-                <i class="fa fa-trash" aria-hidden="true"></i>Add To Cart
-            </button>
+        <div class="col-sm-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2 text-right">
+                        <span>Quantity</span>
+                        <input type="text" class="quantity-input" [(ngModel)]="product.qtyOrdered"/>                    
+                    </div>
+                    <button type="button" class="btn col-sm-1" (click)="addToCart(product)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>Add To Cart
+                    </button>
+                </div>
+            </div>            
         </div>
     </div>
 </div>

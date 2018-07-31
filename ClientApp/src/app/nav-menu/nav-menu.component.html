@@ -14,7 +14,7 @@
                         </a>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" *ngIf="cart">
                     <li>
                         <a [routerLink]='["/Cart"]'>
                             <span class='glyphicon glyphicon-shopping-cart'></span><span> {{cart.cartLines.length}} </span>

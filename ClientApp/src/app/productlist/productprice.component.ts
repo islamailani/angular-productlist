@@ -22,6 +22,5 @@ export class ProductPriceComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.product.shortDescription);
     }
 }

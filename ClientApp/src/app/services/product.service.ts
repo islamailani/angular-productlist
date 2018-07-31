@@ -58,7 +58,6 @@ export class ProductService {
     realTimeInventoryUri = "/api/v1/realtimeinventory";
 
     constructor(private http: HttpClient) {
-        console.log('ProductService: constructor');
     }
 
     products: ProductDto[]
