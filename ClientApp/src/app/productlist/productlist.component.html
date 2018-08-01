@@ -1,9 +1,9 @@
 
-<div class="container" id="tst_productList_nonTable">
-    <div class="row" *ngIf="productCollection">
+<div *ngIf="productCollection$ | async as productCollection" class="container" id="tst_productList_nonTable">
+    <div class="row">
         <app-pager class="col-sm" [pagination]="productCollection.pagination" [updateData]="updateProductData"></app-pager>
     </div>
-    <div *ngFor="let product of products" id="tst_productList_{{product.id}}"
+    <div *ngFor="let product of productCollection.products" id="tst_productList_{{product.id}}"
          class="row well isc-productContainer {{product.isSponsored ? 'sponsored' : ''}}"
          [attr.data-product]="product.id">
         <div class="col-2 col-sm-2 col-md-2 text-center">

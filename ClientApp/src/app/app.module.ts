@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
 import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
 
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { ProductListComponent } from './productlist/productlist.component'
 import { ProductPriceComponent } from './productlist/productprice.component';
 import { ProductDetailComponent } from './productdetail/productdetail.component';
 import { PagerComponent } from './productlist/pager.component';
+import { AppStateModule } from './state/state.module';
 
 @NgModule({
     declarations: [
@@ -28,6 +30,7 @@ import { PagerComponent } from './productlist/pager.component';
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         HttpClientModule,
         FormsModule,
+        AppStateModule,
         RouterModule.forRoot([
             { path: '', component: HomeComponent, pathMatch: 'full' },
             { path: 'Category', component: ProductListComponent },
