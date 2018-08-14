@@ -30,6 +30,7 @@ export class ProductListComponent implements OnInit {
     products: ProductDto[];
     productCollection$: Observable<ProductCollectionModel> = this.productsFacade.productCollection$;
     template: string = "some stuff";
+    pagination: Insite.Core.WebApi.PaginationModel;
 
     constructor(
         private http: HttpClient, 
@@ -38,18 +39,23 @@ export class ProductListComponent implements OnInit {
 
     ngOnInit() {
         this.getProductData({ categoryId: "a926eb0b-1e10-4163-adaf-a67200d93e63" });
+        this.productCollection$.subscribe(model => {
+            if (model) {
+                this.pagination = model.pagination;
+            }
+        })
     }
 
     protected getProductData(params: IProductCollectionParameters, expand?: string[]): void {
-        this.productsFacade.loadProducts(params.categoryId);
+        this.productsFacade.loadProducts(params);
     }
 
     updateProductData = () => {
         const params: IProductCollectionParameters = {
             categoryId: "a926eb0b-1e10-4163-adaf-a67200d93e63",
-            //page: this.productCollection.pagination.page,
-            //pageSize: this.productCollection.pagination.pageSize,
-            //sort: this.productCollection.pagination.sortType
+            page: this.pagination.page,
+            pageSize: this.pagination.pageSize,
+            sort: this.pagination.sortType
         };
 
         this.getProductData(params);

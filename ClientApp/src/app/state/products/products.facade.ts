@@ -8,6 +8,7 @@ import { of }                         from 'rxjs/observable/of';
 
 import {AppState} from '../state';
 import ProductCollectionModel = Insite.Catalog.WebApi.V1.ApiModels.ProductCollectionModel;
+import { IProductCollectionParameters } from '../../services/product.service';
 
 import {ProductsQuery} from './products.reducer';
 import * as productsActions from './products.actions';
@@ -39,8 +40,8 @@ export class ProductsFacade {
         private productService: ProductService
     ) { }
 
-    loadProducts(categoryId): Observable<ProductCollectionModel> {
-        this.store.dispatch(new productsActions.GetProducts({categoryId}));
+    loadProducts(params: IProductCollectionParameters): Observable<ProductCollectionModel> {
+        this.store.dispatch(new productsActions.GetProducts(params));
         return this.productCollection$;
     }
 }
