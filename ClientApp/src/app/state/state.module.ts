@@ -9,14 +9,13 @@ import { ProductService } from '../services/product.service';
 
 @NgModule({
     imports: [
-
         EffectsModule.forRoot([
             ProductsFacade
-        ]),
+        ]), 
 
         // Signature matches AppState interface
         StoreModule.forRoot({
-            product: productsReducer
+            productCollection: productsReducer
         }),
 
         StoreDevtoolsModule.instrument({ maxAge: 25 })

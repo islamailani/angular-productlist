@@ -6,7 +6,7 @@ export const GET_PRODUCTS           = 'Products get';
 export const GET_PRODUCTS_SUCCESS =   'Products get success';
 
 export class GetProducts implements Action {
-  readonly type = GET_PRODUCTS;
+    readonly type = GET_PRODUCTS;
     constructor(public payload: IProductCollectionParameters) {}
 }
 

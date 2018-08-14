@@ -15,10 +15,10 @@ export function productsReducer(state: ProductCollectionModel, action: Action) {
   switch (action.type) {
 
     case ProductsActions.GET_PRODUCTS:
-        return { ...state, loading: true };
+          return { ...state };
 
     case ProductsActions.GET_PRODUCTS_SUCCESS:
-        return { ...state, ...action.payload, loading: false };
+          return { ...state, ...action.payload };
 
     default:
         return state;

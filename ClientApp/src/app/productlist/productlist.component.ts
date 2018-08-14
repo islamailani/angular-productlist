@@ -38,23 +38,8 @@ export class ProductListComponent implements OnInit {
 
     ngOnInit() {
         this.getProductData({ categoryId: "a926eb0b-1e10-4163-adaf-a67200d93e63" });
-        this.productCollection$.subscribe(p => {
-            this.products = p.products;
-        });
     }
 
-    /*
-    ngOnInit() {
-        this.http.get("/scripts/app/productlist.html", { responseType:"text" }).subscribe(t => {
-                this.template = t;
-                this.getProductData({ categoryId: "a926eb0b-1e10-4163-adaf-a67200d93e63" })
-            },
-            (error: HttpErrorResponse) => {
-                console.log('an error occurred: ' + error.message);
-            }
-        );
-    }
-    */
     protected getProductData(params: IProductCollectionParameters, expand?: string[]): void {
         this.productsFacade.loadProducts(params.categoryId);
     }
