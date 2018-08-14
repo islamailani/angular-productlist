@@ -12,16 +12,11 @@ import PaginationModel = Insite.Core.WebApi.PaginationModel;
 import { IProductCollectionParameters } from '../services/product.service';
 import { ProductsFacade } from '../state/products';
 
-@
-Component({
+@Component({
     selector: 'productlist',
-    //template: '<div [innerHTML]="template | keepHtml"></div>',
     templateUrl: './productlist.component.html',
     styleUrls: ['./productlist.component.css'],
     providers: [ProductsFacade, CartService],
-
-    // encapsulation: ViewEncapsulation.Native  // shadowdom or polyfill 
-    // encapsulation: ViewEncapsulation.None
     encapsulation: ViewEncapsulation.Emulated
 })
 export class ProductListComponent implements OnInit {
@@ -33,9 +28,8 @@ export class ProductListComponent implements OnInit {
         private productsFacade: ProductsFacade,
         private cartService: CartService) { }
 
-    ngOnInit() {        
+    ngOnInit() {
         this.updateProductData(null)
-        this.getProductData({ categoryId: "a926eb0b-1e10-4163-adaf-a67200d93e63" });
     }
 
     protected getProductData(params: IProductCollectionParameters, expand?: string[]): void {

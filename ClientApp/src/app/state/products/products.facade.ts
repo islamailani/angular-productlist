@@ -25,14 +25,12 @@ export class ProductsFacade {
 
     @Effect()
     getProducts$: Observable<Action> = this.actions$
-            .ofType(productsActions.GET_PRODUCTS)
-        .delay(300)
+        .ofType(productsActions.GET_PRODUCTS)
         .map((action: productsActions.GetProducts) => action.payload )
         .mergeMap(payload => this.productService.GetProducts(payload))
         .map(products => {
-            //products.pushKey = products.$key;
             return new productsActions.GetProductsSuccess(products);
-    });
+        });
 
     constructor(
         private actions$: Actions,
@@ -40,8 +38,7 @@ export class ProductsFacade {
         private productService: ProductService
     ) { }
 
-    loadProducts(params: IProductCollectionParameters): Observable<ProductCollectionModel> {
+    loadProducts(params: IProductCollectionParameters): void {
         this.store.dispatch(new productsActions.GetProducts(params));
-        return this.productCollection$;
     }
 }
