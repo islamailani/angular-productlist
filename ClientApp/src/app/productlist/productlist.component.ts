@@ -8,6 +8,7 @@ import { CartService } from '../services/cart.service';
 
 import ProductDto = Insite.Catalog.Services.Dtos.ProductDto;
 import ProductCollectionModel = Insite.Catalog.WebApi.V1.ApiModels.ProductCollectionModel;
+import PaginationModel = Insite.Core.WebApi.PaginationModel;
 import { IProductCollectionParameters } from '../services/product.service';
 import { ProductsFacade } from '../state/products';
 
@@ -25,37 +26,28 @@ Component({
 })
 export class ProductListComponent implements OnInit {
 
-    @Input()
-    name;
-    products: ProductDto[];
     productCollection$: Observable<ProductCollectionModel> = this.productsFacade.productCollection$;
-    template: string = "some stuff";
-    pagination: Insite.Core.WebApi.PaginationModel;
 
     constructor(
         private http: HttpClient, 
         private productsFacade: ProductsFacade,
         private cartService: CartService) { }
 
-    ngOnInit() {
+    ngOnInit() {        
+        this.updateProductData(null)
         this.getProductData({ categoryId: "a926eb0b-1e10-4163-adaf-a67200d93e63" });
-        this.productCollection$.subscribe(model => {
-            if (model) {
-                this.pagination = model.pagination;
-            }
-        })
     }
 
     protected getProductData(params: IProductCollectionParameters, expand?: string[]): void {
         this.productsFacade.loadProducts(params);
     }
 
-    updateProductData = () => {
+    updateProductData = (pagination?: PaginationModel) => {
         const params: IProductCollectionParameters = {
             categoryId: "a926eb0b-1e10-4163-adaf-a67200d93e63",
-            page: this.pagination.page,
-            pageSize: this.pagination.pageSize,
-            sort: this.pagination.sortType
+            page: pagination ? pagination.page : null,
+            pageSize: pagination ? pagination!.pageSize : null,
+            sort: pagination ? pagination!.sortType : null
         };
 
         this.getProductData(params);

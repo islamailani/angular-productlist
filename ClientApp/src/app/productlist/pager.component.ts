@@ -12,7 +12,7 @@ export class PagerComponent implements OnInit {
     customContext: any;
     @Input() storageKey: string;
     @Input() pagination: PaginationModel;
-    @Input() updateData: () => void;
+    @Input() updateData: (pagination: PaginationModel) => void;
     @Input() pageChanged: () => void;
     pages: number[];
 
@@ -43,7 +43,7 @@ export class PagerComponent implements OnInit {
         if (this.pageChanged) {
             this.pageChanged();
         }
-        this.updateData();
+        this.updateData(this.pagination);
         return false;
     }
 
@@ -53,7 +53,7 @@ export class PagerComponent implements OnInit {
         if (this.pageChanged) {
             this.pageChanged();
         }
-        this.updateData();
+        this.updateData(this.pagination);
         return false;
     }
 
@@ -67,7 +67,7 @@ export class PagerComponent implements OnInit {
         if (this.pageChanged) {
             this.pageChanged();
         }
-        this.updateData();
+        this.updateData(this.pagination);
     }
 
     updatePageSize(): void {
@@ -80,7 +80,7 @@ export class PagerComponent implements OnInit {
         if (this.pageChanged) {
             this.pageChanged();
         }
-        this.updateData();
+        this.updateData(this.pagination);
     }
 
     updateSortOrder(): void {
@@ -88,7 +88,7 @@ export class PagerComponent implements OnInit {
         if (this.pageChanged) {
             this.pageChanged();
         }
-        this.updateData();
+        this.updateData(this.pagination);
     }
 
     private scrollToTopPager() {
